@@ -1,0 +1,7 @@
+.push {
+    height: 40%;
+}
+.main {
+    overflow: auto;
+    padding-bottom: 70px;
+}
