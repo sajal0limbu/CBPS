@@ -1,83 +1,132 @@
 <div class="container">
+  <ul style = "list-style-type:none;" >
+    <li  *ngFor="let product of products" [class.selected]="product.id === selectedId">
+        <div class ="container">
+          <div class="thumbnail">
+              <a [routerLink]="['/products', product.id]">
+                 <img src="{{product.imageURL}}">
+              </a>
+            <div class="caption">
+              <h3>{{product.name}}</h3>
+              <p>Description: {{product.description}}</p>
+              <p>Price: {{product.price}}</p>
+              <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
+                  role="button">Add to cart</a></p>
+            </div>
+          </div>
+        <!-- <div class="col-sm-3 col-md-3">
+          <div class="thumbnail">
+            <img src="{{product[i+1].imageURL}}">
+            <div class="caption">
+              <h3>{{product[i+1].name}}</h3>
+              <p>Description: {{product[i+1].description}}</p>
+              <p>Price: {{product[i+1].price}}</p>
+              <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
+                  role="button">Add to cart</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <div class="thumbnail">
+            <img src="{{product[i+2].imageURL}}">
+            <div class="caption">
+              <h3>{{product[i+2].name}}</h3>
+              <p>Description: {{product[i+2].description}}</p>
+              <p>Price: {{product[i+2].price}}</p>
+              <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
+                  role="button">Add to cart</a></p>
+            </div>
+          </div>
+        </div>-->
+      </div>
+    </li>
+  </ul>
+<!-- 
   <div class="row">
-    <div class="col-sm-3 col-md-3">
-      <div class="thumbnail">
-        <img src="assets/images/dummy.jpg">
-          <div class="caption">
-          <h3>Book</h3>
-          <p>Author: ????</p>
-          <p>Price: ????</p>
-          <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default" role="button">Add to cart</a></p>
-          </div>
-      </div>
-    </div>
-    <div class="col-sm-3 col-md-3">
-      <div class="thumbnail">
-        <img src="assets/images/dummy.jpg">
-          <div class="caption">
-          <h3>Tshirt</h3>
-          <p>Quality: ????</p>
-          <p>Price: ????</p>
-          <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default" role="button">Add to cart</a></p>
-          </div>
-      </div>
-    </div>
-    <div class="col-sm-3 col-md-3">
-      <div class="thumbnail">
-        <img src="assets/images/dummy.jpg">
-          <div class="caption">
-          <h3>Book</h3>
-          <p>Author: ????</p>
-          <p>Price: ????</p>
-          <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default" role="button">Add to cart</a></p>
-          </div>
+
+
+    <div class="thumbnail">
+      <img src="{{products[0].imageURL}}">
+      <div class="caption">
+        <h3>{{products[0].name}}</h3>
+        <p>Description: {{products[0].description}}</p>
+        <p>Price: {{products[0].price}}</p>
+        <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
+            role="button">Add to cart</a></p>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-3 col-md-3">
-      <div class="thumbnail">
-        <img src="assets/images/dummy.jpg">
-          <div class="caption">
-          <h3>Pants</h3>
-          <p>Quality: ????</p>
-          <p>Price: ????</p>
-          <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default" role="button">Add to cart</a></p>
-          </div>
-      </div>
-    </div>
-    <div class="col-sm-3 col-md-3">
-      <div class="thumbnail">
-        <img src="assets/images/dummy.jpg">
-          <div class="caption">
-          <h3>iPad</h3>
-          <p>Specifications: ????</p>
-          <p>Price: ????</p>
-          <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default" role="button">Add to cart</a></p>
-          </div>
-      </div>
-    </div>
-    <div class="col-sm-3 col-md-3">
-      <div class="thumbnail">
-        <img src="assets/images/dummy.jpg">
-          <div class="caption">
-          <h3>Laptop</h3>
-          <p>Specifications: ????</p>
-          <p>Price: ????</p>
-          <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default" role="button">Add to cart</a></p>
-          </div>
+  <div class="col-sm-3 col-md-3">
+    <div class="thumbnail">
+      <img src="assets/images/dummy.jpg">
+      <div class="caption">
+        <h3>Tshirt</h3>
+        <p>Quality: ????</p>
+        <p>Price: ????</p>
+        <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
+            role="button">Add to cart</a></p>
       </div>
     </div>
   </div>
-  <div class="text-center">
-      <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-      </nav>
+  <div class="col-sm-3 col-md-3">
+    <div class="thumbnail">
+      <img src="assets/images/dummy.jpg">
+      <div class="caption">
+        <h3>Book</h3>
+        <p>Author: ????</p>
+        <p>Price: ????</p>
+        <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
+            role="button">Add to cart</a></p>
+      </div>
+    </div>
   </div>
+</div>
+<div class="row">
+  <div class="col-sm-3 col-md-3">
+    <div class="thumbnail">
+      <img src="assets/images/dummy.jpg">
+      <div class="caption">
+        <h3>Pants</h3>
+        <p>Quality: ????</p>
+        <p>Price: ????</p>
+        <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
+            role="button">Add to cart</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3 col-md-3">
+    <div class="thumbnail">
+      <img src="assets/images/dummy.jpg">
+      <div class="caption">
+        <h3>iPad</h3>
+        <p>Specifications: ????</p>
+        <p>Price: ????</p>
+        <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
+            role="button">Add to cart</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3 col-md-3">
+    <div class="thumbnail">
+      <img src="assets/images/dummy.jpg">
+      <div class="caption">
+        <h3>Laptop</h3>
+        <p>Specifications: ????</p>
+        <p>Price: ????</p>
+        <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
+            role="button">Add to cart</a></p>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="text-center">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
 </div>

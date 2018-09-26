@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,11 @@ import { HttpService } from './services/http.service';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { CookieService } from 'ngx-cookie-service';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { ProductService } from './_services/product.service';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +43,8 @@ import { CookieService } from 'ngx-cookie-service';
     ToysComponentComponent,
     PurchasedPageComponent,
     AdmindashboardComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,12 @@ import { CookieService } from 'ngx-cookie-service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [HttpService,CookieService],
+  providers: [HttpService,
+    CookieService,
+    ProductService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

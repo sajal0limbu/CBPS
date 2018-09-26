@@ -1,0 +1,33 @@
+<div class="container ">
+  <div class="col-md-8" *ngIf="product$ | async as product">
+    <div class="thumbnail">
+      <a [routerLink]="['/products', product.id]">
+        <img src="{{product.imageURL}}">
+      </a>
+      <div class="caption">
+        <h3>{{product.name}}</h3>
+        <p>Description: {{product.description}}</p>
+        <p>Price: {{product.price}}</p>
+        <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
+            role="button">Add to cart</a></p>
+        <p>
+          <button class="btn btn-default" (click)="gotoProducts(product)">Back</button>
+        </p>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <h3>Recommended Product</h3>
+      <ul>
+        <li *ngFor="let prod of products" [class.selected]="prod.id === selectedId">
+            <img src="{{prod.imageURL}}">
+            <h3>{{prod.name}}</h3>
+        </li>
+      </ul>
+    </div>
+
+
+  </div>
+</div>
