@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../_model/product';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, PRIMARY_OUTLET } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ProductService } from '../_services/product.service';
 
@@ -19,7 +19,9 @@ export class ProductDetailsComponent implements OnInit {
     private productService:ProductService
   ) { }
   param:ParamMap;
+  id:string;
   products: Product[];
+  rproducts$: Observable<Product[]>;
   selectedId:number;
   product$: Observable<Product>;
   products$:Observable<Product[]>;
@@ -27,19 +29,29 @@ export class ProductDetailsComponent implements OnInit {
     console.log("this is product detail");
     this.product$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.productService.getProduct(params.get('id')))
-    );
-    console.log("product-detail", this.product$);
 
-    this.productService.getProductsByRecommendation(this.param.get('id')).subscribe(
+        this.productService.getProduct(params.get('id')))
+        
+    );
+    
+    console.log(this.router.parseUrl(this.router.url).root.children[PRIMARY_OUTLET].segments[1]);
+    this.id = this.router.parseUrl(this.router.url).root.children[PRIMARY_OUTLET].segments[1].path;    
+    console.log("product-detail", this.product$);
+    this.productService.getProductsByRecommendation(this.id).subscribe(
       data=>{
         this.products=data;
-        console.log("Recommended List",this.products);
+        console.log("Recommended List",this.rproducts$);
       },
       error=>{
         console.log("error",error);
       }
     );
+
+    // this.rproducts$=this.route.paramMap.pipe(
+    //   switchMap((params: ParamMap)=>
+    //     this.productService.getProductsByRecommendation(params.get('id'))
+    //   )
+    // );
 
     this.products$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
@@ -57,5 +69,6 @@ export class ProductDetailsComponent implements OnInit {
     // Include a junk 'foo' property for fun.
     this.router.navigate(['/products', { id: productId, foo: 'foo' }]);
   }
+
 
 }

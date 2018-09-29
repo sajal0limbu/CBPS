@@ -9,6 +9,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { MainComponent } from './main/main/main.component';
 
 
 const routes: Routes = [
@@ -16,31 +17,39 @@ const routes: Routes = [
     path:'login',
     component: LoginFormComponent,
   },
+
   {
     path:'',
-    component:HomeComponent,
-    canActivate: [AuthGuard]
+    component:MainComponent,
+    canActivate: [AuthGuard],
+    children:[
+      {
+        path:'',
+        component:HomeComponent,
+      },   
+      {
+        path:'products',
+        component:ProductGalleryComponent,
+      },
+      {
+        path:'products/:id',
+        component:ProductDetailsComponent,
+      },
+      {
+        path:'purchase',
+        component:PurchasedPageComponent,
+      },     
+    ]
   },
   {
-    path:'signup',
+    path:'register',
     component:RegisterFormComponent
   },
-  {
-    path:'products',
-    component:ProductGalleryComponent,
-  },
-  {
-    path:'products/:id',
-    component:ProductDetailsComponent
-  },
-  {
-    path:'purchase',
-    component:PurchasedPageComponent,
-  },
+
   {
     path:'admin',
     component:AdmindashboardComponent,
-    canActivate: [AdminGuard]
+    canActivate: [AuthGuard,AdminGuard]
   },
   { path: '**', redirectTo: '' }
 ];

@@ -59,7 +59,17 @@ export class LoginFormComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                  this.router.navigate([this.returnUrl]);
+                  
+                let roles = data.roles;
+                for (let role of roles){
+                    if (role.name == 'ADMIN'){
+                        //logged as admin 
+                        this.router.navigate(['/admin']);
+                        return;
+                    }
+                  }
+                this.router.navigate([this.returnUrl]);
+                  
               },
               error => {
                   this.error = error;

@@ -25,6 +25,7 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { ProductService } from './_services/product.service';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { MainComponent } from './main/main/main.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     PurchasedPageComponent,
     AdmindashboardComponent,
     LoginFormComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

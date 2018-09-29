@@ -28,7 +28,16 @@ export class ProductService {
   }
 
   getProductsByRecommendation( id:string ){
-    const params = new HttpParams().set('id',id);
-    return this.http.get<Product[]>(Config.productUrl.concat("/r"),{params});
+    console.log(id);
+    let params = new HttpParams().append("id",id);
+    console.log(params);
+    return this.http.get<Product[]>(Config.productUrl.concat("/r"),{params:params});
   }
+
+  // getProductsByRecommendation( id:string ): Observable<Product[]>{
+  //   console.log(id);
+  //   let params = new HttpParams().append("id",id);
+  //   console.log(params);
+  //   return this.http.get<Product[]>(Config.productUrl.concat("/r"),{params:params, responseType:'json'});
+  // }
 }

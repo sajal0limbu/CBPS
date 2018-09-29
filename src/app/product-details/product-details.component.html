@@ -1,9 +1,7 @@
 <div class="container ">
   <div class="col-md-8" *ngIf="product$ | async as product">
     <div class="thumbnail">
-      <a [routerLink]="['/products', product.id]">
         <img src="{{product.imageURL}}">
-      </a>
       <div class="caption">
         <h3>{{product.name}}</h3>
         <p>Description: {{product.description}}</p>
@@ -22,7 +20,7 @@
       <h3>Recommended Product</h3>
       <ul>
         <li *ngFor="let prod of products" [class.selected]="prod.id === selectedId">
-            <img src="{{prod.imageURL}}">
+            <a [routerLink]="['/products',prod.id]"><img src="{{prod.imageURL}}"></a>
             <h3>{{prod.name}}</h3>
         </li>
       </ul>
