@@ -26,6 +26,7 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { ProductService } from './_services/product.service';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { MainComponent } from './main/main/main.component';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MainComponent } from './main/main/main.component';
     AdmindashboardComponent,
     LoginFormComponent,
     ProductDetailsComponent,
-    MainComponent
+    MainComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
