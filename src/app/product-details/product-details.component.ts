@@ -4,6 +4,7 @@ import { Product } from '../_model/product';
 import { Router, ActivatedRoute, ParamMap, PRIMARY_OUTLET } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ProductService } from '../_services/product.service';
+import { CartService } from '../_services/cart.service';
 
 
 @Component({
@@ -16,10 +17,12 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService:ProductService
+    private productService:ProductService,
+    private cartService:CartService
   ) { }
   param:ParamMap;
   id:string;
+  quantity:string;
   products: Product[];
   rproducts$: Observable<Product[]>;
   selectedId:number;
@@ -68,6 +71,23 @@ export class ProductDetailsComponent implements OnInit {
     // so that the HeroList component can select that hero.
     // Include a junk 'foo' property for fun.
     this.router.navigate(['/products', { id: productId, foo: 'foo' }]);
+  }
+
+  onKey(event: any) { // without type info
+    this.quantity = event.target.value;
+    console.log(this.quantity);
+  }
+
+  addToCart(){
+    console.log("added");
+    this.cartService.addToCart(this.quantity,parseInt(this.id)).subscribe(
+      data=>{
+
+      },
+      error=>{
+        console.log("error",error);
+      }
+    );
   }
 
 

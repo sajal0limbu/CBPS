@@ -6,8 +6,10 @@
         <h3>{{product.name}}</h3>
         <p>Description: {{product.description}}</p>
         <p>Price: {{product.price}}</p>
-        <p><a href="purchase" class="btn btn-primary" role="button">Buy now</a> <a href="#" class="btn btn-default"
-            role="button">Add to cart</a></p>
+        <p>
+          <label>Quantity </label>
+          <input (keyup)="onKey($event)" type=number>
+          <a (click)="addToCart()" class="btn btn-default" href = "/cart" role="button"> Add to cart</a></p>
         <p>
           <button class="btn btn-default" (click)="gotoProducts(product)">Back</button>
         </p>
@@ -18,9 +20,9 @@
   <div class="col-md-4">
     <div class="thumbnail">
       <h3>Recommended Product</h3>
-      <ul>
+      <ul style = "list-style-type:none;">
         <li *ngFor="let prod of products" [class.selected]="prod.id === selectedId">
-            <a [routerLink]="['/products',prod.id]"><img src="{{prod.imageURL}}"></a>
+            <a href="/products/{{prod.id}}"><img src="{{prod.imageURL}}"></a>
             <h3>{{prod.name}}</h3>
         </li>
       </ul>

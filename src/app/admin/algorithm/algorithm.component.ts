@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { AprioriService } from '../_services/apriori.service';
-import { Result } from '../_model/result';
-import { AssociationRule } from '../_model/association-rule';
-
+import { Result } from '../../_model/result';
+import { AssociationRule } from '../../_model/association-rule';
+import { AprioriService } from '../../_services/apriori.service';
 @Component({
-  selector: 'app-admindashboard',
-  templateUrl: './admindashboard.component.html',
-  styleUrls: ['./admindashboard.component.css']
+  selector: 'app-algorithm',
+  templateUrl: './algorithm.component.html',
+  styleUrls: ['./algorithm.component.css']
 })
-export class AdmindashboardComponent implements OnInit {
+export class AlgorithmComponent implements OnInit {
+
 
   result:Result;
   associationRules:AssociationRule[];

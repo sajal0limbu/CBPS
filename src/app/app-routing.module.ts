@@ -6,10 +6,14 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProductGalleryComponent } from './product-gallery/product-gallery.component';
 import { PurchasedPageComponent } from './purchased-page/purchased-page.component';
 import { AuthGuard } from './_guards/auth.guard';
-import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { MainComponent } from './main/main/main.component';
+import { CartComponent } from './cart/cart.component';
+import { AlgorithmComponent } from './admin/algorithm/algorithm.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+
+
 
 
 const routes: Routes = [
@@ -17,7 +21,6 @@ const routes: Routes = [
     path:'login',
     component: LoginFormComponent,
   },
-
   {
     path:'',
     component:MainComponent,
@@ -36,6 +39,10 @@ const routes: Routes = [
         component:ProductDetailsComponent,
       },
       {
+        path:'cart',
+        component:CartComponent,
+      },
+      {
         path:'purchase',
         component:PurchasedPageComponent,
       },     
@@ -48,8 +55,14 @@ const routes: Routes = [
 
   {
     path:'admin',
-    component:AdmindashboardComponent,
-    canActivate: [AuthGuard,AdminGuard]
+    component:AdminDashboardComponent,
+    canActivate: [AuthGuard,AdminGuard],
+    children:[
+      {
+        path:'algorithm',
+        component:AlgorithmComponent
+      }
+    ]
   },
   { path: '**', redirectTo: '' }
 ];

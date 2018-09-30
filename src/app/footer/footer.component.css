@@ -1,7 +1,11 @@
-.push {
-    height: 40%;
+.wrapper {    
+	margin-top: 80px;
+	margin-bottom: 20px;
 }
 .main {
     overflow: auto;
     padding-bottom: 70px;
+}
+.text-center{
+    text-align: center;
 }

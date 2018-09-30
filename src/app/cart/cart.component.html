@@ -1,0 +1,42 @@
+
+		<div class="container-fluid breadcrumbBox text-center">
+			<ol class="breadcrumb">
+				
+				<li class="active"><a href="#">Your Order</a></li>
+				
+			</ol>
+		</div>
+		
+		<div class="container text-center">
+
+			<div class="col-md-4 col-sm-8">
+				<div class="bigcart"></div>
+				<h1>Your shopping cart</h1>
+				<p>
+					These are your products.
+				</p>
+			</div>
+			
+			<div class="col-md-8 col-sm-12 text-left">
+				<ul>
+					<li class="row list-inline columnCaptions">
+						<span>QTY</span>
+						<span>ITEM</span>
+						<span>Price</span>
+					</li>
+					<li *ngFor = "let cartItem of cart.cartItems" class="row">
+						<span class="quantity">{{cartItem.quantity}}</span>
+						<span class="itemName">{{cartItem.product.name}}</span>
+            <a class = "glyphicon glyphicon-remove" (click)="removeCartItem(cartItem)" href="/cart"  ></a>
+            <span class="price">{{cartItem.product.price}}</span>
+            
+          </li>
+          <li class="row totals">
+              <span class="itemName">Total:</span>
+              <span class="price">{{cart.amount}}</span>
+              <span class="order" *ngIf="cart.amount != 0"> <a (click)="completeTransaction()" href="/purchase" class="text-center">Purchase</a></span>
+            </li>
+				</ul>
+			</div>
+
+		</div>

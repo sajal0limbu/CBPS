@@ -18,7 +18,6 @@ import { ShoesComponentComponent } from './products/shoes-component/shoes-compon
 import { ToysComponentComponent } from './products/toys-component/toys-component.component';
 import { PurchasedPageComponent } from './purchased-page/purchased-page.component';
 import { HttpService } from './services/http.service';
-import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
@@ -27,6 +26,13 @@ import { ProductService } from './_services/product.service';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { MainComponent } from './main/main/main.component';
 import { TestComponent } from './test/test.component';
+import { SuperheaderComponent } from './superheader/superheader.component';
+import { CartComponent } from './cart/cart.component';
+import { AlgorithmComponent } from './admin/algorithm/algorithm.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+
+
+
 
 
 @NgModule({
@@ -44,11 +50,14 @@ import { TestComponent } from './test/test.component';
     ShoesComponentComponent,
     ToysComponentComponent,
     PurchasedPageComponent,
-    AdmindashboardComponent,
     LoginFormComponent,
     ProductDetailsComponent,
     MainComponent,
-    TestComponent
+    TestComponent,
+    SuperheaderComponent,
+    CartComponent,
+    AlgorithmComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
